@@ -10,12 +10,15 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity 
+@Entity
+@Table(name = "movimentacoes")
 public class Movimentacao {
 
 	@Id
@@ -33,9 +36,11 @@ public class Movimentacao {
 	private String descricao;
 	
 	@ManyToOne
+	@JoinColumn(name = "conta_id")
 	private Conta conta;
 	
 	@ManyToMany
+	@JoinColumn(name = "categoria_id")
 	private List<Categoria> categoria;
 
 	public Integer getId() {
