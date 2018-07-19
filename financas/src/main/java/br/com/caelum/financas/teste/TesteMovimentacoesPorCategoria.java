@@ -5,25 +5,24 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.caelum.financas.modelo.Conta;
+import br.com.caelum.financas.modelo.Categoria;
 import br.com.caelum.financas.modelo.Movimentacao;
-import br.com.caelum.financas.modelo.TipoMovimentacao;
 import br.com.caelum.financas.util.JPAUtil;
 
-public class TesteJPQL {
+public class TesteMovimentacoesPorCategoria {
 	
 	public static void main(String[] args) {
 		EntityManager manager = new JPAUtil().getEntityManager();
 
 		manager.getTransaction().begin();
 
-		Conta conta = new Conta();
-		conta.setId(2);
+		Categoria categoria = new Categoria();
+		categoria.setId(1);
 			
-		String jpql = "SELECT m FROM Movimentacao m WHERE m.conta = :pConta and m.tipo = :pTipo order by m.valor desc";
+		String jpql = "SELECT m FROM Movimentacao m JOIN m.categoria c WHERE c = :pCategoria";
+
 		Query query = manager.createQuery(jpql);
-		query.setParameter("pConta", conta);
-		query.setParameter("pTipo", TipoMovimentacao.SAIDA);
+		query.setParameter("pCategoria", categoria);
 		
 		List<Movimentacao> resultados = query.getResultList();
 		
@@ -35,5 +34,5 @@ public class TesteJPQL {
 		manager.getTransaction().commit();
 		manager.close();
 	}
-
+	
 }

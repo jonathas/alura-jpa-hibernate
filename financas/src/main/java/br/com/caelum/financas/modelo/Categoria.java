@@ -14,7 +14,6 @@ public class Categoria {
 
 	private String nome;
 	
-	@Deprecated
 	public Categoria() {
 		
 	}

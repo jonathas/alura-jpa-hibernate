@@ -36,7 +36,7 @@ public class Movimentacao {
 	private Conta conta;
 	
 	@ManyToMany
-	private List<Categoria> categorias;
+	private List<Categoria> categoria;
 
 	public Integer getId() {
 		return id;
@@ -86,12 +86,12 @@ public class Movimentacao {
 		this.conta = conta;
 	}
 
-	public List<Categoria> getCategorias() {
-		return categorias;
+	public List<Categoria> getCategoria() {
+		return categoria;
 	}
 
-	public void setCategorias(List<Categoria> categorias) {
-		this.categorias = categorias;
+	public void setCategoria(List<Categoria> categoria) {
+		this.categoria = categoria;
 	}
 	
 }

@@ -26,7 +26,7 @@ public class TesteMovimentacoesComCategoria {
 		movimentacao1.setDescricao("Viagem à SP");
 		movimentacao1.setTipo(TipoMovimentacao.SAIDA);
 		movimentacao1.setValor(new BigDecimal("100.0"));
-		movimentacao1.setCategorias(Arrays.asList(categoria1, categoria2));
+		movimentacao1.setCategoria(Arrays.asList(categoria1, categoria2));
 		
 		movimentacao1.setConta(conta);
 		
@@ -35,7 +35,7 @@ public class TesteMovimentacoesComCategoria {
 		movimentacao2.setDescricao("Viagem ao RJ");
 		movimentacao2.setTipo(TipoMovimentacao.SAIDA);
 		movimentacao2.setValor(new BigDecimal("300.0"));
-		movimentacao2.setCategorias(Arrays.asList(categoria1, categoria2));
+		movimentacao2.setCategoria(Arrays.asList(categoria1, categoria2));
 		
 		movimentacao2.setConta(conta);
 		
