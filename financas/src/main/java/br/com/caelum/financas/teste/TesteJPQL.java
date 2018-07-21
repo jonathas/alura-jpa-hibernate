@@ -20,7 +20,7 @@ public class TesteJPQL {
 		Conta conta = new Conta();
 		conta.setId(2);
 			
-		String jpql = "SELECT m FROM Movimentacao m WHERE m.conta = :pConta and m.tipo = :pTipo order by m.valor desc";
+		String jpql = "SELECT m FROM Movimentacao m WHERE m.conta = :pConta AND m.tipo = :pTipo ORDER BY m.valor DESC";
 		Query query = manager.createQuery(jpql);
 		query.setParameter("pConta", conta);
 		query.setParameter("pTipo", TipoMovimentacao.SAIDA);

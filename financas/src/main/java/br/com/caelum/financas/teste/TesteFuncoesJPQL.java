@@ -19,7 +19,7 @@ public class TesteFuncoesJPQL {
 		Conta conta = new Conta();
 		conta.setId(2);
 			
-		String jpql = "SELECT sum(m.valor) FROM Movimentacao m WHERE m.conta = :pConta and m.tipo = :pTipo order by m.valor desc";
+		String jpql = "SELECT sum(m.valor) FROM Movimentacao m WHERE m.conta = :pConta AND m.tipo = :pTipo";
 		Query query = manager.createQuery(jpql);
 		query.setParameter("pConta", conta);
 		query.setParameter("pTipo", TipoMovimentacao.SAIDA);
@@ -28,7 +28,7 @@ public class TesteFuncoesJPQL {
 		
 		System.out.println("A soma é: " + soma);
 		
-		jpql = "SELECT avg(m.valor) FROM Movimentacao m WHERE m.conta = :pConta and m.tipo = :pTipo order by m.valor desc";
+		jpql = "SELECT avg(m.valor) FROM Movimentacao m WHERE m.conta = :pConta AND m.tipo = :pTipo";
 		query = manager.createQuery(jpql);
 		query.setParameter("pConta", conta);
 		query.setParameter("pTipo", TipoMovimentacao.SAIDA);
@@ -36,6 +36,22 @@ public class TesteFuncoesJPQL {
 		Double media = (Double) query.getSingleResult();
 		
 		System.out.println("A media é: " + media);
+		
+		jpql = "SELECT max(m.valor) FROM Movimentacao m WHERE m.conta = :pConta";
+		query = manager.createQuery(jpql);
+		query.setParameter("pConta", conta);
+		
+		BigDecimal max = (BigDecimal) query.getSingleResult();
+		
+		System.out.println("A max é: " + max);
+		
+		jpql = "SELECT count(m.valor) FROM Movimentacao m WHERE m.conta = :pConta";
+		query = manager.createQuery(jpql);
+		query.setParameter("pConta", conta);
+		
+		Long count = (Long) query.getSingleResult();
+		
+		System.out.println("O count é: " + count);
 		
 		manager.getTransaction().commit();
 		manager.close();
