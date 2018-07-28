@@ -13,11 +13,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@NamedQuery(query="SELECT avg(m.valor) FROM Movimentacao m WHERE m.conta = :pConta AND m.tipo = :pTipo "
+		+ "group by day(m.data), month(m.data), year(m.data)", name="MediasPorDiaETipo")
 @Table(name = "movimentacoes")
 public class Movimentacao {
 

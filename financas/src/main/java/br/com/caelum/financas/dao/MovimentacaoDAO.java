@@ -22,11 +22,11 @@ public class MovimentacaoDAO {
 		String jpql = "SELECT avg(m.valor) FROM Movimentacao m WHERE m.conta = :pConta AND m.tipo = :pTipo "
 				+ "group by day(m.data), month(m.data), year(m.data)";
 
-		TypedQuery<Double> myQuery = em.createQuery(jpql, Double.class);
-		myQuery.setParameter("pConta", conta);
-		myQuery.setParameter("pTipo", tipo);
+		TypedQuery<Double> query = em.createQuery(jpql, Double.class);
+		query.setParameter("pConta", conta);
+		query.setParameter("pTipo", tipo);
 
-		return myQuery.getResultList();
+		return query.getResultList();
 	}
 
 	public BigDecimal getSoma(TipoMovimentacao tipo, Conta conta) {
